@@ -1,8 +1,7 @@
 # Desktop Assistant
 
 A Virtual Desktop Assistant Written in Python.
-<br> It's generally a basic virtual assistant
-<img src="https://github.com/Harsha200105/DesktopAssitant/blob/main/resource/JJ.jpeg">  <br>
+<br> It's generally a basic virtual assistant<br>
 The basic purpose of this is to make work easier as it re-directs you to various main sites and performs various important functions for your PC as well just install it for your system and run it in your code editor or IDE. I will be soon updating it as an application for MacOS, Linux and Windows. Until then you can follow the Contributing Guidelines and Contribute into this Desktop Assistant.<br>
 
 # Installing :
