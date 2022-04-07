@@ -23,7 +23,7 @@ Wow All done! Now give the command to jarvis.
 # Run
 For windows user run
 ```
-python Jarvis2_4windows.py
+python main.py
 ```
 
 Wow! all done and now give some voice command
