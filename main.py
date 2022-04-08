@@ -64,7 +64,7 @@ What here shall miss, our toil shall strive to mend.
 def main(search_engine, take_command, debug):
     def execute_the_command_said_by_user():
         query = take_command()
-        
+
 
         # logic for executing commands without arguments
         phrases = {
@@ -112,10 +112,10 @@ def main(search_engine, take_command, debug):
             change_volume(query, take_command)
 
         elif "date" in query:
-            speak(f"{datetime.datetime.now():%A, %B %d, %Y}")
+            speak(f"The date is {datetime.datetime.now():%A, %B %d, %Y}")
 
         elif "time" in query:
-            speak(f"{datetime.datetime.now():%I %M %p}")
+            speak(f"The time is {datetime.datetime.now():%I %M %p}")
 
         elif "echo" in query.lower():
             while True:

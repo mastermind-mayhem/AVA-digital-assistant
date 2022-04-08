@@ -25,10 +25,8 @@ def command_wikipedia(debug, query):
 
 def command_whatsup():
     st_msgs = [
-        "Just doing my thing!",
-        "I am fine!",
-        "Nice!",
-        "I am nice and full of energy",
+        "I am just doing my thing",
+        "Nothing Much",
     ]
     speak(random.choice(st_msgs))
 
