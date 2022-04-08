@@ -47,8 +47,14 @@ def search(search_query, search_engine):
 def gui_speak(text):
     pass
 
+def gui_show(text):
+    pass
 
 def set_gui_speak(command):
+    global gui_speak
+    gui_speak = command
+
+def set_gui_show(command):
     global gui_speak
     gui_speak = command
 
@@ -57,6 +63,11 @@ def speak(text):
     gui_speak(text)
     engine.say(text)
     engine.runAndWait()
+
+def show(text):
+    gui_show(text)
+    engine.runAndWait()
+
 
 
 def wish_me(master):
@@ -70,6 +81,17 @@ def wish_me(master):
 
     else:
         speak("Good Evening" + master)
+
+def wish_me_bye(master):
+    hour = datetime.datetime.now().hour
+    if hour >= 0 and hour < 12:
+        speak("Have a Good Morning" + master)
+
+    elif hour >= 12 and hour < 17:
+        speak("Have a Good Afternoon" + master)
+
+    else:
+        speak("Have a Good Evening" + master)
 
     # speak("Hey I am Jarvis. How may I help you")
 

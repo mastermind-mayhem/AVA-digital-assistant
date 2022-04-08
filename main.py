@@ -10,19 +10,16 @@ from actions import (  # isort: skip
     search_engine_selector,
     set_gui_speak,
     speak,
+    set_gui_show,
+    show,
     wish_me
+    # wish_me_bye
 )
 from commands import (  # isort: skip
-    command_bye,
     command_hello,
-    command_mail,
     command_nothing,
     command_open,
-    command_pause_music,
-    command_play_music,
     command_search,
-    command_stop_music,
-    command_unpause_music,
     command_whatsup,
     command_wikipedia,
     command_echo
@@ -63,6 +60,8 @@ What here shall miss, our toil shall strive to mend.
 
 def main(search_engine, take_command, debug):
     def execute_the_command_said_by_user():
+
+        show('Testing')
         query = take_command()
 
 
@@ -70,14 +69,10 @@ def main(search_engine, take_command, debug):
         phrases = {
             "what's up": command_whatsup,
             "nothing": command_nothing,
-            "abort": command_nothing,
+            "exit": command_nothing,
             "stop": command_nothing,
             "hello": command_hello,
-            "bye": command_bye,
-            "play music": command_play_music,
-            "unpause": command_unpause_music,
-            "pause music": command_pause_music,
-            "stop music": command_stop_music
+            "echo": command_echo,
         }
         for phrase, command in phrases.items():
             if phrase in query:
@@ -116,19 +111,26 @@ def main(search_engine, take_command, debug):
 
         elif "time" in query:
             speak(f"The time is {datetime.datetime.now():%I %M %p}")
-
-        elif "echo" in query.lower():
-            while True:
-                try:
-                    num1 = input("What would you like to say?: ")
-                    command_echo(num1)
-                except KeyboardInterrupt:
-                    break
         speak("-------------------")
         # speak("Next Command! Sir!")
+    def mic_change():
+        try:
+            mic = config['DEFAULT']['mic']
+            if mic == 'False':
+                config['DEFAULT']['mic'] = 'True'
+                speak('I detected that the mic was off')
+            elif mic == 'True':
+                config['DEFAULT']['mic'] = 'False'
+                speak('I detected that the mic was on')
+            with open('config.ini', 'w') as configfile:
+                config.write(configfile)
+        except Exception:
+            speak("Invalid value. Please try again.")
 
     gui.set_speak_command(execute_the_command_said_by_user)
+    gui.set_mic_command(mic_change)
     set_gui_speak(gui.speak)
+    set_gui_show(gui.show)
     gui.mainloop()
 
 
@@ -137,13 +139,14 @@ def run():
 
     search_engine = search_engine_selector(config)
 
+    mic = config['DEFAULT']['mic']
     debug = config['DEFAULT']['debug']
-
-    if debug == "True":
-        def take_command():
-            return input("Command |--> ")
-    else:
-        def take_command():
+    def take_command():
+        mic = config['DEFAULT']['mic']
+        debug = config['DEFAULT']['debug']
+        if mic == "False":
+            return input("Input: ")
+        else:
             r = sr.Recognizer()
             with sr.Microphone() as source:
                 print("Listening....")
@@ -155,7 +158,7 @@ def run():
             try:
                 print("Recognizing....")
                 query = r.recognize_google(audio, language="en-in")
-                print("user said: " + query)
+                show("user said: " + query)
                 # userspeak(query)
 
             except sr.UnknownValueError:
@@ -174,9 +177,12 @@ def run():
             # query = input("Input: ")
 
             return query
-
-    speak(text="Initializing....")
+    speak("Initializing PING")
     wish_me(master)
+    if mic == "True":
+        speak('The Microphone is on')
+    else:
+        speak('The Microphone is off')
     main(search_engine, take_command, debug)
 
 

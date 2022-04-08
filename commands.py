@@ -6,7 +6,7 @@ import sys
 import wikipedia
 from pygame import mixer
 
-from actions import open_url, search, speak
+from actions import open_url, search, speak, wish_me_bye
 
 config = configparser.ConfigParser()  # if exists loads library.
 config.read('config.ini')
@@ -52,64 +52,18 @@ def command_search(query, search_engine):
     search_query = query.split("for")[-1]
     search(search_query, search_engine)
 
-
-def command_mail(take_command):
-    speak("Who is the recipient? ")
-    recipient = take_command()
-
-    try:
-        speak("What should I say? ")
-        content = take_command()
-
-        email = config['EMAIL']
-        server = smtplib.SMTP(email['server'], email['port'])
-        server.ehlo()
-        server.starttls()
-        server.login(email['username'], email['password'])
-        server.sendmail(email['username'], recipient, content)
-        server.close()
-        speak("Email sent!")
-    except Exception:
-        speak("Sorry ")
-        speak("I am unable to send your message at this moment!")
-
-
 def command_nothing():
-    speak("okay")
-    speak("Bye, have a good day.")
+    master = config['DEFAULT']['master']
+    wish_me_bye(master)
     sys.exit()
 
-def command_echo(text):
-    speak(text)
+def command_echo():
+    while True:
+        try:
+            num1 = input("What would you like to say?: ")
+            speak(num1)
+        except KeyboardInterrupt:
+            break
 
 def command_hello():
     speak("Hello")
-
-
-def command_bye():
-    speak("Bye Sir, have a good day.")
-    sys.exit()
-
-
-def command_play_music():
-    try:
-        music_folder = config['DEFAULT']['musicPath']
-        music = ("music1", "music2", "music3", "music4")
-        random_music = music_folder + random.choice(music) + ".mp3"
-        speak("Playing your request")
-        mixer.music.load(random_music)
-        mixer.music.play()
-    except Exception as e:
-        speak(e)
-
-
-def command_pause_music():
-    mixer.music.pause()
-
-
-def command_stop_music():
-    mixer.music.stop()
-
-
-def command_unpause_music():
-    mixer.music.unpause()
