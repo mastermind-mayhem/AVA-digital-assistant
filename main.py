@@ -165,8 +165,10 @@ def run():
     wish_me(master)
     if mic == "True":
         speak('The Microphone is on')
+        print('The Microphone is on')
     else:
         speak('The Microphone is off')
+        print('The Microphone is off')
     main(search_engine, take_command, debug)
 
 
