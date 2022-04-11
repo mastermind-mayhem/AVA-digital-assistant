@@ -22,7 +22,9 @@ from commands import (  # isort: skip
     command_search,
     command_whatsup,
     command_wikipedia,
-    command_echo
+    command_echo,
+    command_weather,
+    command_news
 )
 import datetime
 import getpass
@@ -31,6 +33,11 @@ import random
 import smtplib
 import sys
 import webbrowser
+import time, playsound, urllib.parse, urllib.error
+import calendar
+import bs4 as bs
+import urllib.request, sys, stdiomask, subprocess, webbrowser, pyperclip
+from collections import Counter
     # cd onedrive/documents/github/desktopassistant
     # python jarvis2_4windows.py
 popular_websites = {
@@ -40,6 +47,23 @@ popular_websites = {
     "amazon": "https://www.amazon.com",
     "github": "https://www.github.com",
 }
+
+romeo = """
+Two households, both alike in dignity,
+In fair Verona, where we lay our scene,
+From ancient grudge break to new mutiny,
+Where civil blood makes civil hands unclean.
+From forth the fatal loins of these two foes
+A pair of star-cross'd lovers take their life;
+Whose misadventured piteous overthrows
+Do with their death bury their parents' strife.
+The fearful passage of their death-mark'd love,
+And the continuance of their parents' rage,
+Which, but their children's end, nought could remove,
+Is now the two hours' traffic of our stage;
+The which if you with patient ears attend,
+What here shall miss, our toil shall strive to mend.
+"""
 
 
 def main(search_engine, take_command, debug):
@@ -57,6 +81,7 @@ def main(search_engine, take_command, debug):
             "stop": command_nothing,
             "hello": command_hello,
             "echo": command_echo,
+            "weather": command_weather
         }
         for phrase, command in phrases.items():
             if phrase in query:
@@ -76,6 +101,7 @@ def main(search_engine, take_command, debug):
             )
 
         elif "search" in query:
+            query = query[query.index('search')+6:]
             command_search(query, search_engine)
 
         elif "mail" in query:
@@ -95,6 +121,11 @@ def main(search_engine, take_command, debug):
 
         elif "time" in query:
             speak(f"The time is {datetime.datetime.now():%I %M %p}")
+        elif 'news' in query:
+            command_news(take_command)
+        elif 'romeo' in query:
+            speak(romeo)
+
         speak("-------------------")
         # speak("Next Command! Sir!")
     def mic_change():
@@ -103,9 +134,11 @@ def main(search_engine, take_command, debug):
             if mic == 'False':
                 config['DEFAULT']['mic'] = 'True'
                 speak('I detected that the mic was off')
+                print('The Microphone is on')
             elif mic == 'True':
                 config['DEFAULT']['mic'] = 'False'
                 speak('I detected that the mic was on')
+                print('The Microphone is off')
             with open('config.ini', 'w') as configfile:
                 config.write(configfile)
         except Exception:
