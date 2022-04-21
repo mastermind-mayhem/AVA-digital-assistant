@@ -1,0 +1,1 @@
+start "" C:\Users\maste\OneDrive\Documents\GitHub\EVA-Digital-Assistant\main.py

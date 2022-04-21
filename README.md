@@ -18,12 +18,25 @@ Installing all the necessary python module using
 pip install -r requirements.txt
 ```             
 
-Wow All done! Now give the command to jarvis.
+# Creating a Shortcut
+First run in the cloned Repository folder
+```
+python batchcreator.py
+```             
+Next it will ask for a file path, The path to the you want to give it is the file path of PING.bat <br>
+Then it will ask for the location of your desktop folder in order to install a shortcut, Provide it with a path (i.e. "C:\Users\[Your User Abbrev.]\Desktop") <br>
+
+# Personalizing The assistant
+In an editor open the file config.ini, the two top most items<br>
+```
+master = User
+voice = Female
+```
+Replace User with your name<br>
+Then change the voice to your preference Female or Male<br>
 
 # Run
 For windows user run
 ```
 python main.py
 ```
-
-Wow! all done and now give some voice command

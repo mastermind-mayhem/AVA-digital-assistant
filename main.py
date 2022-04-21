@@ -80,8 +80,8 @@ def main(search_engine, take_command, debug):
             "exit": command_nothing,
             "stop": command_nothing,
             "hello": command_hello,
-            "echo": command_echo,
-            "weather": command_weather
+            "echo": command_echo
+            # "weather": command_weather
         }
         for phrase, command in phrases.items():
             if phrase in query:
