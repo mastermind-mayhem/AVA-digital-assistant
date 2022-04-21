@@ -60,6 +60,7 @@ def set_gui_show(command):
 
 
 def speak(text):
+    print(text)
     gui_speak(text)
     engine.say(text)
     engine.runAndWait()
@@ -74,13 +75,13 @@ def wish_me(master):
     hour = datetime.datetime.now().hour
     # print(hour)
     if hour >= 0 and hour < 12:
-        speak("Good Morning" + master)
+        speak("Good Morning " + master)
 
     elif hour >= 12 and hour < 18:
-        speak("Good Afternoon" + master)
+        speak("Good Afternoon " + master)
 
     else:
-        speak("Good Evening" + master)
+        speak("Good Evening " + master)
 
 def wish_me_bye(master):
     hour = datetime.datetime.now().hour
@@ -157,6 +158,19 @@ def change_volume(query, take_command):
             pass
     except Exception:
         speak("Invalid value. Please try again.")
+
+def change_name(take_command):
+    speak("What do you want to change your name to?")
+    name = take_command()
+    speak("I got "+name+", do you want to keep this")
+    answer = take_command()
+    if answer == "yes":
+        config['DEFAULT']['master'] = name
+        with open('config.ini', 'w') as configfile:
+            config.write(configfile)
+        speak('The name has been changed and will be updated on the next startup')
+    else:
+        pass
 
 
 engine = pyttsx3.init("sapi5")

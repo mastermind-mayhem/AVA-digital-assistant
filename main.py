@@ -7,6 +7,7 @@ from actions import (  # isort: skip
     change_rate,
     change_voice,
     change_volume,
+    change_name,
     search_engine_selector,
     set_gui_speak,
     speak,
@@ -23,7 +24,7 @@ from commands import (  # isort: skip
     command_whatsup,
     command_wikipedia,
     command_echo,
-    command_weather,
+    # command_weather,
     command_news
 )
 import datetime
@@ -115,7 +116,8 @@ def main(search_engine, take_command, debug):
 
         elif "change volume" in query.lower():
             change_volume(query, take_command)
-
+        elif "change" in query.lower() and "name" in query.lower():
+            change_name(take_command)
         elif "date" in query:
             speak(f"The date is {datetime.datetime.now():%A, %B %d, %Y}")
 
@@ -198,10 +200,10 @@ def run():
     wish_me(master)
     if mic == "True":
         speak('The Microphone is on')
-        print('The Microphone is on')
+        # print('The Microphone is on')
     else:
         speak('The Microphone is off')
-        print('The Microphone is off')
+        # print('The Microphone is off')
     main(search_engine, take_command, debug)
 
 

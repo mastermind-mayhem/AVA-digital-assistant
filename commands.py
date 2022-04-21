@@ -81,7 +81,7 @@ def command_echo():
 
 def command_hello():
     master = config['DEFAULT']['master']
-    speak("Hello", master)
+    speak("Hello "+master)
 #Not configured
 # def command_weather():
 #     source = urllib.request.urlopen('https://darksky.net/forecast/[Put your Cordinates Here]/us12/en').read()
@@ -112,7 +112,7 @@ def command_news(take_command):
                 break
             c= c+1
             speak(v)
-            print(v)
+            # print(v)
             result = 1
     else:
         try:
