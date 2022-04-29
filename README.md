@@ -1,4 +1,4 @@
-# Desktop Assistant
+# PING Digital Assistant
 
 A Virtual Desktop Assistant Written in Python.
 <br> It's generally a basic virtual assistant<br>
