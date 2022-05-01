@@ -1,11 +1,4 @@
-import configparser
-import random
-import smtplib
-import sys
-import datetime
-import getpass
-import os
-import webbrowser
+import configparser, random, smtplib, sys, datetime, getpass, os, webbrowser
 import time, playsound, urllib.parse, urllib.error
 import calendar
 import bs4 as bs
