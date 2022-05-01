@@ -48,7 +48,7 @@ def command_open(query, popular_websites, debug, search_engine, take_command):
     website = query.replace("open", "").strip().lower()
     try:
         open_url(popular_websites[website])
-    except KeyError:  # If the website is unknown
+    except KeyError:
         if debug == "True":
             print(f"Unknown website: {website}")
         else:
