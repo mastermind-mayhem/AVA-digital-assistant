@@ -2,23 +2,17 @@ import configparser
 import random
 import smtplib
 import sys
-
-import wikipedia
-from pygame import mixer
-
-from actions import open_url, search, speak, wish_me_bye
-
 import datetime
 import getpass
 import os
-import random
-import smtplib
-import sys
 import webbrowser
 import time, playsound, urllib.parse, urllib.error
 import calendar
 import bs4 as bs
 import urllib.request, sys, stdiomask, subprocess, webbrowser, pyperclip
+import wikipedia
+from pygame import mixer
+from actions import open_url, search, speak, wish_me_bye
 from collections import Counter
 
 config = configparser.ConfigParser()  # if exists loads library.
