@@ -2,9 +2,9 @@
 
 A Virtual Desktop Assistant Written in Python.
 <br> It's generally a basic virtual assistant<br>
-The basic purpose of this is to make work easier as it re-directs you to various main sites and performs various important functions for your PC as well just install it for your system and run it in your code editor or IDE.
-Github Desktop is mandatory - https://desktop.github.com/
-Highly recommended that git is installed - https://git-scm.com/downloads<br>
+The basic purpose of this is to make work easier as it re-directs you to various main sites and performs various important functions for your PC as well just install it for your system and run it in your code editor or IDE.<br>
+<br>Github Desktop is mandatory - https://desktop.github.com/<br>
+<br>Highly recommended that git is installed - https://git-scm.com/downloads<br>
 
 # Installing 
 
