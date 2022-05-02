@@ -58,7 +58,7 @@ def main(search_engine, take_command, debug):
 
         # logic for executing commands without arguments
         phrases = {
-            "what's up": command_whatsup,
+            "what is up": command_whatsup,
             "exit": command_nothing,
             "hello": command_hello,
             "echo": command_echo
@@ -124,7 +124,6 @@ def main(search_engine, take_command, debug):
     gui.set_speak_command(execute_the_command_said_by_user)
     gui.set_mic_command(mic_change)
     set_gui_speak(gui.speak)
-    set_gui_show(gui.show)
     gui.mainloop()
 
 
@@ -144,6 +143,7 @@ def run():
             r = sr.Recognizer()
             with sr.Microphone() as source:
                 print("Listening....")
+                # playsound.playsound('Chime.mp3')
                 r.pause_threshold = 0.5
                 r.energy_threshold = int(config['DEFAULT']['energy_threshold'])
                 audio = r.listen(source)

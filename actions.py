@@ -86,13 +86,13 @@ def wish_me(master):
 def wish_me_bye(master):
     hour = datetime.datetime.now().hour
     if hour >= 0 and hour < 12:
-        speak("Have a Good Morning" + master)
+        speak("Have a Good Morning " + master)
 
     elif hour >= 12 and hour < 17:
-        speak("Have a Good Afternoon" + master)
+        speak("Have a Good Afternoon " + master)
 
     else:
-        speak("Have a Good Evening" + master)
+        speak("Have a Good Evening " + master)
 
     # speak("Hey I am Jarvis. How may I help you")
 
@@ -146,9 +146,11 @@ def change_voice(query, take_command):
 
 def change_volume(query, take_command):
     try:
-        volume = query.split('to')[-1]
+        volume = query.split()
+        volume = volume[3]
         engine.setProperty('volume', int(volume)/100)
-        speak("¿Do you want to keep this config?")
+        speak('I got volume '+volume)
+        speak("Do you want to keep this config")
         answer = take_command()
         if answer == "yes":
             config['DEFAULT']['volume'] = volume
