@@ -6,3 +6,7 @@ pyttsx3==2.90
 tk #Tkinter library for using GUI support
 pyperclip
 BeautifulSoup4
+stdiomask
+lxml
+playsound
+requests

@@ -16,6 +16,11 @@ Steps to run the Assistant on your pc (use python 3.9)
 Installing all the necessary python module using
 ```
 pip install -r requirements.txt
+pip install playsound
+pip install beautifulsoup4
+pip install wikipedia
+pip install pyttsx3
+
 ```             
 
 # Creating a Shortcut

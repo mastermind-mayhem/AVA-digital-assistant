@@ -47,6 +47,8 @@ popular_websites = {
     "wikipedia": "https://www.wikipedia.org",
     "amazon": "https://www.amazon.com",
     "github": "https://www.github.com",
+    "tidal": "https://listen.tidal.com/",
+    "spotify": "https://open.spotify.com/"
 }
 
 def main(search_engine, take_command, debug):
