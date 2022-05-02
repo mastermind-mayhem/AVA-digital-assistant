@@ -36,9 +36,7 @@ python main.py
 ```
 
 # Optional - Creating a Shortcut
-First run in the cloned Repository folder
-```
-python batchcreator.py
-```             
-Next it will ask for a file path, The path to the you want to give it is the file path of PING.bat <br>
-Then it will ask for the location of your desktop folder in order to install a shortcut, Provide it with a path (i.e. "C:\Users\[Your User Abbrev.]\Desktop") <br>
+1. open File Explorer and go to the cloned folder
+2. find and open the file PING.bat
+3. Replace the brackets with the file path to main.py (no quotes)
+
