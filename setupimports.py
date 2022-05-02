@@ -1,10 +1,5 @@
-import configparser, random, smtplib, sys, datetime, getpass, os, webbrowser
-import time, playsound, urllib.parse, urllib.error
-import calendar
-import bs4 as bs
-import urllib.request, sys, stdiomask, subprocess, webbrowser, pyperclip
-import wikipedia
-from pygame import mixer
+import subprocess
+
 # import getpass, os
 # # USER_NAME = getpass.getuser()
 # filepath = input("file path?: ")
