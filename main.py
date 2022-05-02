@@ -24,7 +24,7 @@ from commands import (  # isort: skip
     command_whatsup,
     command_wikipedia,
     command_echo,
-    # command_weather,
+    command_weather,
     command_news
 )
 import datetime
@@ -61,8 +61,8 @@ def main(search_engine, take_command, debug):
             "what is up": command_whatsup,
             "exit": command_nothing,
             "hello": command_hello,
-            "echo": command_echo
-            # "weather": command_weather
+            "echo": command_echo,
+            "weather": command_weather
         }
         for phrase, command in phrases.items():
             if phrase in query:

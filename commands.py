@@ -69,17 +69,18 @@ def command_echo():
 def command_hello():
     master = config['DEFAULT']['master']
     speak("Hello "+master)
-#Not configured
-# def command_weather():
-#     source = urllib.request.urlopen('https://darksky.net/forecast/[Put your Cordinates Here]/us12/en').read()
-#     soup = bs.BeautifulSoup(source,'lxml')
-#     for paragraph in soup.find_all('span', class_='high-temp-text'):
-#         hightemp = paragraph.text
-#     for paragraph in soup.find_all('span', class_='low-temp-text'):
-#         lowtemp = paragraph.text
-#     for paragraph in soup.find_all('span', class_='summary swap'):
-#         current = paragraph.text
-#     speak('It is currently '+current+' with a high of '+hightemp+' and a low temp of '+lowtemp)
+
+def command_weather():
+    weatherurl = config['DEFAULT']['weatherurl']
+    source = urllib.request.urlopen(weatherurl).read()
+    soup = bs.BeautifulSoup(source,'lxml')
+    for paragraph in soup.find_all('span', class_='high-temp-text'):
+        hightemp = paragraph.text
+    for paragraph in soup.find_all('span', class_='low-temp-text'):
+        lowtemp = paragraph.text
+    for paragraph in soup.find_all('span', class_='summary swap'):
+        current = paragraph.text
+    speak('It is currently '+current+' with a high of '+hightemp+' and a low temp of '+lowtemp)
 
 def command_news(take_command):
     i = 0
