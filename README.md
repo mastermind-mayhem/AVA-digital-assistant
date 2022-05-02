@@ -20,6 +20,7 @@ pip install playsound
 pip install beautifulsoup4
 pip install wikipedia
 pip install pyttsx3
+pip install lxml
 
 ```             
 
