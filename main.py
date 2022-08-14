@@ -173,7 +173,7 @@ def run():
             # query = input("Input: ")
 
             return query
-    speak("Initializing PING")
+    speak("Initializing AVA")
     wish_me(master)
     if mic == "True":
         speak('The Microphone is on')
